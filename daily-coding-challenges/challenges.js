@@ -62,6 +62,12 @@ addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
 
+function addTwoNumbers(firstNumber, secondNumber) {
+  if (typeof firstNumber !== 'number' || typeof secondNumber !== 'number') {
+    return NaN;
+  }
+  return firstNumber + secondNumber
+}
 
 
 
