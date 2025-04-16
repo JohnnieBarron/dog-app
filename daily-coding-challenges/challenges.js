@@ -92,9 +92,24 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 
+const array = [];
+
+function sumNumbers(array) {
+  let sum = 0;
+
+  if (array.length === 0) {
+    return 0;
+  } else array.forEach(array => {
+    sum += array;
+  });
+  return sum;
+}
 
 
-
+sumNumbers([10]) //=> 10
+sumNumbers([5, 10]) //=> 15
+sumNumbers([2, 10, -5]) //=> 7
+sumNumbers([]) //=> 0
 
 /*-----------------------------------------------------------------------------
 Challenge: 04-addList
