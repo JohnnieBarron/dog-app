@@ -111,7 +111,7 @@ const label = album1.albumDetails.label
     album5,
     album6,
     album7
-  ];
+  ]
   
   // Exercise 8:  Using the talkingHeadsAlbums array, assign album5's 
   // labels property to a variable named labels
@@ -149,3 +149,7 @@ const label = album1.albumDetails.label
   console.log('Exercise 8:', labels);
   console.log('Exercise 9:', talkingHeadsAlbums[5].albumDetails.released);
   console.log('Exercise 10:', albumDetails);
+
+
+
+  
