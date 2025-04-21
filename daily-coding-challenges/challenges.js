@@ -131,7 +131,7 @@ addList(7,-12) //=> -5
 -----------------------------------------------------------------------------*/
 // Your solution for 04-addList here:
 
-function addList(...) {
+function addList(...numbers) {
   let sum = 0;
   for (let num of numbers) {
     sum += num;
