@@ -164,7 +164,17 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------------------*/
 // Your solution for 05-computeRemainder here:
 
+function computeRemainder(num1, num2) {
+  if (num2 === 0) {
+    return Infinity;
+  }
 
+  // Subtract the whole number of divisions from the dividend
+  const quotient = Math.floor(num1 / num2);
+  const remainder = num1 - (quotient * num2);
+
+  return remainder;
+}
 
 
 
@@ -193,6 +203,18 @@ range(5,2) //=> "First argument must be less than second"
 
 
 
+function range (start, end) {
+  const result = [];
+  if (start > end) {
+    return "First argument must be less than second"
+  } else {
+    for (let i = start; i < end; i++) {
+    result.push(i)
+  }
+  return result;
+  console.log(result);
+  }
+}
 
 
 /*-----------------------------------------------------------------------------
