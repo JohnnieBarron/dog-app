@@ -14,6 +14,13 @@ let tie;
 
 /*-------------------------------- Functions --------------------------------*/
 
+function init () {
+    board = [null, null, null, null, null, null, null, null, null];
+    turn = (1);
+    winner = (null);
+    tie = ('Tie');
+    console.log('Initilize')
+};
 
 
 /*----------------------------- Event Listeners -----------------------------*/
