@@ -1,6 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 const squareELs = document.querySelectorAll('.sqr');
-const messageEl = document.getElementById('message');
+const messageEl = document.querySelector('h2');
 
 /*---------------------------- Variables (state) ----------------------------*/
 let board;
@@ -19,7 +19,12 @@ function init () {
     turn = (1);
     winner = (null);
     tie = ('Tie');
-    console.log('Initilize')
+    console.log(init)
+    render();
+};
+
+function render() {
+
 };
 
 
