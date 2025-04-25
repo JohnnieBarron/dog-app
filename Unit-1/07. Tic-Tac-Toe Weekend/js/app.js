@@ -26,6 +26,7 @@ let tie;
 
 const squareELs = document.querySelectorAll('.sqr');
 const messageEl = document.querySelector('h2');
+const resetBtnEl = document.getElementById('reset');
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -35,43 +36,64 @@ function init () {
     [null, null, null, null, null, null, null, null, null];
     turn = (1);
     winner = (null);
-    tie = ('Tie');
+    tie = (false);
     console.log(init)
     render();
 };
 
 
-// function checkTie() {
-//     if (board.every(cell => cell !== null) && !winner) {
-//       winner = 'Tie';
-//     }
-//   }
+function switchTurn() {
+    if (winner !== null) return;
+    else {
+        turn *= -1;
+    }
 
-
-
-// function handleClick(index) {
-//     if (board[index] !== null || winner !== null) return;
-//     board[index] = turn;
-//     checkWinner();
-//     checkTie();
-//     if (winner === null) {
-//         turn *= -1;
-//     }
-// };
-
-function handleClick(index) {
-    const squareIdx = index;
-
-    if (squareIdx.textContent === 'X' || squareIdx.textContent === 'O' || winner !== null) return;
-    placePiece(index);
-    
-    render();
-    console.log(board);
 };
+
+
+
+function checkWinner() {
+    for (let combo of winningCombos) {
+        const [a, b, c] = combo;
+        
+        if (board[a] !== null &&
+            board[a] === board[b] &&
+            board[a] === board[c]) {
+                winner = turn; 
+                return;
+            }
+        }
+    }
+
+    function checkTie() {
+        if (winner !== null) return;
+        if (board.includes(null)) {
+            tie = false;
+          } else {
+            tie = true;
+            winner = 'Tie'; 
+          }
+
+    };
+    
+    
+    function handleClick(index) {
+        const squareIdx = index;
+    
+        if (squareIdx.textContent === 'X' || squareIdx.textContent === 'O' || winner !== null) return;
+        placePiece(index);
+        checkWinner();
+        checkTie();
+        switchTurn();
+        
+        render();
+        console.log(winner);
+    }; 
+
+
 
 function placePiece(index) {
     board[index] = turn;
-
 }
 
 function updateBoard() {
@@ -87,16 +109,18 @@ function updateBoard() {
 }
 
 function renderMessage() {
-    if (winner === '1') {
-        messageEl.textContent = " X's Win!";
-    } else if (winner === '-1') {
-        messageEl.textContent = " O's Win!";
-    } else if (winner === 'Tie') {
-        messageEl.textContent = " Tie Game!";}
-    // } else if (winner === null) {
-    //     messageEl.textContent = `${PLAYERS}'s Turn`;
-    // }
-};
+    if (winner === 1) {
+      messageEl.textContent = "X's Win!";
+    } else if (winner === -1) {
+      messageEl.textContent = "O's Win!";
+    } else if (winner === 'Tie' || tie === true) {
+      messageEl.textContent = "Tie Game!";
+    } else {
+      messageEl.textContent = `${PLAYERS[turn]}'s Turn`;
+    }
+  }
+  
+  
 
 function render() {
     updateBoard();
@@ -108,9 +132,9 @@ function render() {
 /*----------------------------- Event Listeners -----------------------------*/
 
 
-//6) Handle a player clicking a square with a `handleClick` function.
+
 squareELs.forEach((square, index) => {
     square.addEventListener('click', () => handleClick(index));
   });
+  resetBtnEl.addEventListener('click', init);
 
-//7) Create Reset functionality.
