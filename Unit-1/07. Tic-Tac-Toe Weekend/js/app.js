@@ -40,9 +40,39 @@ function init () {
     render();
 };
 
-function handleClick(Event) {
 
+// function checkTie() {
+//     if (board.every(cell => cell !== null) && !winner) {
+//       winner = 'Tie';
+//     }
+//   }
+
+
+
+// function handleClick(index) {
+//     if (board[index] !== null || winner !== null) return;
+//     board[index] = turn;
+//     checkWinner();
+//     checkTie();
+//     if (winner === null) {
+//         turn *= -1;
+//     }
+// };
+
+function handleClick(index) {
+    const squareIdx = index;
+
+    if (squareIdx.textContent === 'X' || squareIdx.textContent === 'O' || winner !== null) return;
+    placePiece(index);
+    
+    render();
+    console.log(board);
 };
+
+function placePiece(index) {
+    board[index] = turn;
+
+}
 
 function updateBoard() {
     board.forEach((value, index) => {
@@ -78,15 +108,9 @@ function render() {
 /*----------------------------- Event Listeners -----------------------------*/
 
 
-squareELs.addEventListener('click', handleClick);
-
-
-
-
-
-
-
-
 //6) Handle a player clicking a square with a `handleClick` function.
+squareELs.forEach((square, index) => {
+    square.addEventListener('click', () => handleClick(index));
+  });
 
 //7) Create Reset functionality.
