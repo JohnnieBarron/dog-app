@@ -236,7 +236,9 @@ reverseUpcaseString("SEI Rocks!") //=> "!SKCOR IES"
 // Your solution for 07-reverseUpcaseString here:
 
 
-
+function reverseUpcaseString(str) {
+  return str.split('').reverse().join('').toUpperCase();
+}
 
 
 /*-----------------------------------------------------------------------------
@@ -257,8 +259,10 @@ removeEnds('a') //=> "" (empty string)
 -----------------------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
 
-
-
+function removeEnds(str) {
+  if (str.length < 3) return '';
+  return str.substring(1, str.length - 1);
+}
 
 
 /*-----------------------------------------------------------------------------
