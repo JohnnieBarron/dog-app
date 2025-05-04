@@ -1,0 +1,12 @@
+{
+  "name": "04.-men-stack-crud-lab",
+  "version": "1.0.0",
+  "description": "Setup is complete for this lab",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
