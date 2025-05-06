@@ -381,6 +381,12 @@ isPalindrome('') //=> true
 // Your solution for 11-isPalindrome here:
 
 
+function isPalindrome(str) {
+  
+  const cleaned = str.replace(/\s+/g, '').toLowerCase();
+  const reversed = cleaned.split('').reverse().join('');
+  return cleaned === reversed;
+}
 
 
 
