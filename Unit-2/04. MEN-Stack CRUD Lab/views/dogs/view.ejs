@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>view dog</title>
+</head>
+<body>
+    <a href="/">home</a>
+    <a href="/dogs">Browse more dogs</a>
+
+    <img src="<%= dog.image %>" alt="Photo of <%= dog.name %>" class="small-img">
+    <br>
+     <h1>Meet <%= dog.name %>!</h1>
+     <p>He is a <%= dog.breed %> and <%= dog.age %> years old! <%= dog.name %>'s owner 
+    had this to say about him. "<%= dog.description %>"</p>
+
+
+    <form action="/dogs/<%=dog._id%>?_method=DELETE" method="POST">
+    <button type="submit">
+      Delete <%= dog.name %>
+    </button>
+  </form>
+
+  <a href="/dogs/<%= dog._id %>/edit">Edit <%= dog.name %></a>
+    
+</body>
+</html>
